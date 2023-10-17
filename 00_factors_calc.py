@@ -28,19 +28,19 @@ def instructions():
 
 
 # Checks input is a number more than a given value
-def num_check(question, low):
+def num_check(question, low, high):
     valid = False
     while not valid:
 
-        error = "Please enter an integer that is more than(or equal to) {}".format(low)
+        error = "Please enter an integer that is more than {} or lower than {} and isn't a decimal".format(low, high)
 
         try:
 
             # ask user to enter a number
             response = int(input(question))
 
-            # checks number is more than zero
-            if response >= low:
+            # checks number is more than zero & less than 200
+            if low <= response <= high:
                 return response
 
             # outputs error if input is invalid
@@ -112,7 +112,7 @@ while keep_going == "":
     comment = ""
 
     # ask user for number to be factored
-    var_to_factor = num_check("Number? ", 1)
+    var_to_factor = num_check("Number? ", 1, 200)
 
     if var_to_factor != 1:
         factor_list = get_factors(var_to_factor)
